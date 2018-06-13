@@ -38,6 +38,7 @@ public class VideoController {
                     buffer.write(data, 0, n);
                 }
                 buffer.flush();
+                buffer.close();
                 httpHeaders.add("Content-Type", "video/mp4");
                 return new ResponseEntity<>(buffer.toByteArray(), httpHeaders, HttpStatus.OK);
             } else {
