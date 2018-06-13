@@ -28,21 +28,22 @@ public class VideoController {
                     return false;
             });
             if (isExist) {
-                final FileInputStream inputStream = new FileInputStream(new File(video.getLocation()));
+                final File file = new File(video.getLocation());
+                final FileInputStream inputStream = new FileInputStream(file);
                 final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
                 int n;
-                byte[] data = new byte[16384];
-
+                byte[] data = new byte[10240];
                 while ((n = inputStream.read(data, 0, data.length)) != -1) {
                     buffer.write(data, 0, n);
                 }
                 buffer.flush();
-                buffer.close();
                 httpHeaders.add("Content-Type", "video/mp4");
+                httpHeaders.add("Content-Disposition", "attachment; filename="+ file.getName());
+                httpHeaders.add("Accept-Ranges", "bytes");
                 return new ResponseEntity<>(buffer.toByteArray(), httpHeaders, HttpStatus.OK);
             } else {
-                throw new VstreamException("No video found with a name: " + vname);
+                throw new VstreamException("No video found!");
             }
         } catch (VstreamException e) {
             httpHeaders.add("Content-Type", "text/html");
@@ -70,6 +71,7 @@ public class VideoController {
                 e.printStackTrace();
             }
         }
+        reader.close();
         return videos;
     }
 }

@@ -9,9 +9,13 @@
     <script src="http://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
 </head>
 <body>
-    <video id="my-video" class="video-js" controls preload="auto" width="640" height="264" th:poster="@{/image/poster.jpg}" data-setup="{}">
+    <video id="my-video" class="video-js" controls preload="auto" width="740" height="304"
+           th:poster="@{/image/poster.jpg}" data-setup="{}">
         <source th:src="${videoSrc}" type="video/mp4"/>
     </video>
+    <script th:src="@{/vendor/js/jquery.min.js}"></script>
+
     <script src="https://vjs.zencdn.net/7.0.3/video.js"></script>
+    <script th:src="@{/js/player.js}"></script>
 </body>
 </html>
