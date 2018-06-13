@@ -11,16 +11,15 @@ import java.net.UnknownHostException;
 @Controller
 public class VstreamController {
 
-    @GetMapping("get/player")
-    public String videoPlayer(@RequestParam("video") String video, Model model) {
+    @GetMapping("/player")
+    public String videoPlayer(@RequestParam("v") String v, Model model) {
         String host;
         try {
             host = Inet4Address.getLocalHost().getHostAddress();
         } catch (UnknownHostException e) {
             host = "localhost";
         }
-        model.addAttribute("host", host);
-        model.addAttribute("video", video);
-        return "player";
+        model.addAttribute("videoSrc", "http://" + host + ":8080/" + v);
+        return "vplayer";
     }
 }

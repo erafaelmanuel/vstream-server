@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>VStream</title>
+    <link href="https://vjs.zencdn.net/7.0.3/video-js.css" rel="stylesheet">
+    <link th:href="@{/css/player.css}" rel="stylesheet"/>
+
+    <script src="http://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
+</head>
+<body>
+    <video id="my-video" class="video-js" controls preload="auto" width="640" height="264" th:poster="@{/image/poster.jpg}" data-setup="{}">
+        <source th:src="${videoSrc}" type="video/mp4"/>
+    </video>
+    <script src="https://vjs.zencdn.net/7.0.3/video.js"></script>
+</body>
+</html>
