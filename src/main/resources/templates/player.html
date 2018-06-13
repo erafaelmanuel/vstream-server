@@ -6,7 +6,7 @@
 </head>
 <body>
     <video controls>
-        <source th:src="${'http://' + address + ':8080/video'}" type="video/mp4"/>
+        <source th:src="${'http://' + host + ':8080/' + video}" type="video/mp4"/>
     </video>
 </body>
 </html>

@@ -1,1 +1,2 @@
-video#C:\Users\Hotaru\Videos\Tutorial\Drawing\Drawing Inori Yuzuhira from Guilty Crown.mp4
+sample1#C:\Users\Hotaru\Videos\Tutorial\Drawing\Drawing Inori Yuzuhira from Guilty Crown.mp4
+sample2#C:\Users\Hotaru\Videos\Tutorial\Drawing\How to Color Skin with Colored Pencils.mp4

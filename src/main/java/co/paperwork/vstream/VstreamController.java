@@ -3,6 +3,7 @@ package co.paperwork.vstream;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
@@ -10,15 +11,16 @@ import java.net.UnknownHostException;
 @Controller
 public class VstreamController {
 
-    @GetMapping("1/player")
-    public String videoPlayer(Model model) {
-        String address;
+    @GetMapping("get/player")
+    public String videoPlayer(@RequestParam("video") String video, Model model) {
+        String host;
         try {
-            address = Inet4Address.getLocalHost().getHostAddress();
+            host = Inet4Address.getLocalHost().getHostAddress();
         } catch (UnknownHostException e) {
-            address = "localhost";
+            host = "localhost";
         }
-        model.addAttribute("address", address);
+        model.addAttribute("host", host);
+        model.addAttribute("video", video);
         return "player";
     }
 }
