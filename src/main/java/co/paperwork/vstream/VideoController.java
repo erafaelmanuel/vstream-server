@@ -38,8 +38,10 @@ public class VideoController {
                     buffer.write(data, 0, n);
                 }
                 buffer.flush();
+                buffer.close();
                 httpHeaders.add("Content-Type", "video/mp4");
-                httpHeaders.add("Content-Disposition", "attachment; filename="+ file.getName());
+                httpHeaders.add("Content-Length", String.valueOf(file.length()));
+                httpHeaders.add("Content-Disposition", "attachment; filename=" + file.getName());
                 httpHeaders.add("Accept-Ranges", "bytes");
                 return new ResponseEntity<>(buffer.toByteArray(), httpHeaders, HttpStatus.OK);
             } else {
